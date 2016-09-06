@@ -27,7 +27,7 @@ sudo make prefix=/opt/mro install
 
 cd ../../additionalPackages
 
-sudo /opt/mro/lib/R/bin/Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'))"
+sudo /opt/mro/lib/R/bin/Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'), repos='http://mran.microsoft.com/snapshot/2016-07-01')"
 sudo /opt/mro/lib/R/bin/R CMD INSTALL -l /opt/mro/lib/R/library/ doParallel RevoIOQ RevoMods RevoUtils
 
 cp ../../../Rprofile.site /opt/mro/lib/R/etc/Rprofile.site
