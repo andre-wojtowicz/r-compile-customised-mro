@@ -10,7 +10,7 @@ sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force
 sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install build-essential gfortran libreadline-dev libx11-dev libxt-dev zlib1g-dev libbz2-dev liblzma-dev libpcre3-dev libcurl4-openssl-dev openjdk-7-jdk openjdk-7-jre
 
 wget https://github.com/Microsoft/microsoft-r-open/archive/MRO-${R_VERSION}.tar.gz
-tar -xvf microsoft-r-open-MRO-${R_VERSION}.tar.gz
+tar -xvf MRO-${R_VERSION}.tar.gz
 
 cd microsoft-r-open-MRO-${R_VERSION}/
 
