@@ -21,7 +21,7 @@ sed -i "s/#define NCONNECTIONS 128/#define NCONNECTIONS ${NEW_CONNECTION_LIMIT}/
 mkdir build
 cd build
 
-../configure
+../configure --enable-R-shlib
 make -j `nproc`
 sudo make prefix=/opt/mro install
 
