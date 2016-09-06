@@ -1,2 +1,3 @@
-# r-compile-customised-mro
-Guide to compile Microsoft R Open with custom cluster nodes connection limit
+# Microsoft R Open compilation for customised cluster nodes connection limit
+
+R has a hard-coded limit for number of connections, which is roughly speaking 128 (and efficiently 125; see [R-parallel-Errors](https://github.com/tobigithub/R-parallel/wiki/R-parallel-Errors#snow-and-dosnow---all-connections-are-in-us)). For this reason making large scale clusters for parallel computing is almost impossible in a standard way. To solve this problem one can compile a customised version of R with suitable connection limit. The included in repo shell script shows how to prepare such a customised R distribution from [Microsoft R Open](https://mran.microsoft.com) sources.
