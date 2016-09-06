@@ -2,7 +2,7 @@
 
 # Ubuntu 14.04
 
-R_VERSION="3.1.1"
+R_VERSION="3.3.1"
 NEW_CONNECTION_LIMIT="2048"
 
 sudo apt-get update
