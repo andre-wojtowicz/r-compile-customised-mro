@@ -21,20 +21,23 @@ sed -i "s/#define NCONNECTIONS 128/#define NCONNECTIONS ${NEW_CONNECTION_LIMIT}/
 mkdir build
 cd build
 
-../configure --enable-R-shlib
+../configure LIBnn=lib64 --enable-R-shlib
 make -j `nproc`
 sudo make prefix=/opt/mro install
 
 cd ../../additionalPackages
 
-sudo /opt/mro/lib/R/bin/Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'), repos='http://mran.microsoft.com/snapshot/2016-07-01')"
-sudo /opt/mro/lib/R/bin/R CMD INSTALL -l /opt/mro/lib/R/library/ doParallel RevoIOQ RevoMods RevoUtils
+sudo /opt/mro/lib64/R/bin/Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'), repos='http://mran.microsoft.com/snapshot/2016-07-01')"
+sudo /opt/mro/lib64/R/bin/R CMD INSTALL -l /opt/mro/lib64/R/library/ doParallel RevoIOQ RevoMods RevoUtils
 
-cp ../../../Rprofile.site /opt/mro/lib/R/etc/Rprofile.site
+cp ../../../Rprofile.site /opt/mro/lib64/R/etc/Rprofile.site
+
+# Additional Java reconfiguration might be helpful:
+#   sudo R CMD javareconf
 
 # R and Rscript paths:
-#    /opt/mro/lib/R/bin/R
-#    /opt/mro/lib/R/bin/Rscript
+#    /opt/mro/lib64/R/bin/R
+#    /opt/mro/lib64/R/bin/Rscript
 
 # Compress files:
 #   tar -cvf mro-3.1.1.tar.gz /opt/mro
@@ -43,11 +46,10 @@ cp ../../../Rprofile.site /opt/mro/lib/R/etc/Rprofile.site
 #   sudo tar -xvf mro-3.1.1.tar.gz -C /
 
 # Create symbolic links:
-#   sudo ln -s /opt/mro/lib/R/bin/R /usr/bin/R
-#   sudo ln -s /opt/mro/lib/R/bin/Rscript /usr/bin/Rscript
-
-# Sometimes reconfiguring Java will be helpful:
-#   sudo R CMD javareconf
+#   sudo ln -s /opt/mro/lib64/R/bin/R /usr/bin/R
+#   sudo ln -s /opt/mro/lib64/R/bin/Rscript /usr/bin/Rscript
 
 # Uninstall R:
 #   sudo rm -r /opt/mro
+#   sudo rm /usr/bin/R
+#   sudo rm /usr/bin/Rscript
