@@ -2,7 +2,6 @@
 # Debian
 
 R_VERSION="3.3.1"
-CHECKPOINT_SNAPSHOT_DATE="2016-07-01"
 NEW_CONNECTION_LIMIT="2048"
 DEST_DIR="/usr/lib64/microsoft-r/${R_VERSION:0:3}"
 
@@ -33,7 +32,8 @@ ln -s ${DEST_DIR}/lib64/R/bin/R /usr/bin/R
 ln -s ${DEST_DIR}/lib64/R/bin/Rscript /usr/bin/Rscript
 
 cd ../../additionalPackages
-Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'), repos='http://mran.microsoft.com/snapshot/${CHECKPOINT_SNAPSHOT_DATE}')"
+Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'), \
+    repos='http://mran.microsoft.com/snapshot/$(grep -oP 'MRANDate: \K.*' RevoUtils/DESCRIPTION)')"
 R CMD INSTALL -l ${DEST_DIR}/lib64/R/library/ doParallel RevoIOQ RevoMods RevoUtils
 
 cp ../../Rprofile.site /${DEST_DIR}/lib64/R/etc/Rprofile.site
