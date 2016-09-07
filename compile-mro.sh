@@ -36,7 +36,7 @@ cd ../../additionalPackages
 Rscript -e "install.packages(c('foreach', 'iterators', 'RUnit', 'checkpoint'), repos='http://mran.microsoft.com/snapshot/${CHECKPOINT_SNAPSHOT_DATE}')"
 R CMD INSTALL -l ${DEST_DIR}/lib64/R/library/ doParallel RevoIOQ RevoMods RevoUtils
 
-cp ../../../Rprofile.site /${DEST_DIR}/lib64/R/etc/Rprofile.site
+cp ../../Rprofile.site /${DEST_DIR}/lib64/R/etc/Rprofile.site
 
 R CMD javareconf # additional Java reconfiguration might be helpful
 
